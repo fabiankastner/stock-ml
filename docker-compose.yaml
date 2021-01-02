@@ -16,8 +16,11 @@ services:
         expose:
             - '3306'
 
+        command: --init-file /docker-entrypoint-initdb.d/init.sql
+
         volumes:
             - db_data:/var/lib/mysql
+            - ./stock-ml-db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
     web:
         build: stock-ml-web/.
