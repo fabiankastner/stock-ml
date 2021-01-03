@@ -29,18 +29,16 @@ services:
         - stock-ml-network-extern
         - stock-ml-network-intern
 
-<<<<<<< HEAD
     config:
         build: stock-ml-config-master/.
         ports:
             - "5000:5000"
         networks:
-=======
+
     data:
         build: stock-ml-data/.
         networks:
         - stock-ml-network-extern
->>>>>>> 21d7c02da4ba54f55675f069eaa483c0e44f36a6
         - stock-ml-network-intern
 
 networks:
