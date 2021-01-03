@@ -29,6 +29,12 @@ services:
         - stock-ml-network-extern
         - stock-ml-network-intern
 
+    data:
+        build: stock-ml-data/.
+        networks:
+        - stock-ml-network-extern
+        - stock-ml-network-intern
+
 networks:
     stock-ml-network-extern:
         driver: bridge
