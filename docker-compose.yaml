@@ -30,6 +30,13 @@ services:
         - stock-ml-network-extern
         - stock-ml-network-intern
 
+    config:
+        build: stock-ml-config-master/.
+        ports:
+            - "5000:5000"
+        networks:
+        - stock-ml-network-intern
+
 networks:
     stock-ml-network-extern:
         driver: bridge
