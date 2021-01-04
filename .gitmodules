@@ -1,0 +1,3 @@
+[submodule "stock-ml-nn"]
+	path = stock-ml-nn
+	url = https://github.com/fabiankastner/stock-ml-nn.git
