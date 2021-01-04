@@ -1,15 +1,15 @@
 [submodule "stock-ml-nn"]
 	path = stock-ml-nn
-	url = git@github.com/fabiankastner/stock-ml-nn.git
+	url = git@github.com:fabiankastner/stock-ml-nn.git
 [submodule "stock-ml-web"]
 	path = stock-ml-web
-	url = git@github.com/fabiankastner/stock-ml-web.git
+	url = git@github.com:fabiankastner/stock-ml-web.git
 [submodule "stock-ml-db"]
 	path = stock-ml-db
-	url = git@github.com/fabiankastner/stock-ml-db.git
+	url = git@github.com:fabiankastner/stock-ml-db.git
 [submodule "stock-ml-data"]
 	path = stock-ml-data
-	url = git@github.com/fabiankastner/stock-ml-data.git
+	url = git@github.com:fabiankastner/stock-ml-data.git
 [submodule "stock-ml-config"]
 	path = stock-ml-config
-	url = git@github.com/fabiankastner/stock-ml-config.git
+	url = git@github.com:fabiankastner/stock-ml-config.git
