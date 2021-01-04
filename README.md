@@ -10,9 +10,8 @@ an originally monolithic stock price prediction project using django as a front 
 ---
 
 ### repositories  
-clone the following repositories as the mentioned folder structure indicates  
+Following repositories are included within this one:
 
-- [fabiankastner/stock-ml](https://github.com/fabiankastner/stock-ml)  
 - [fabiankastner/stock-ml-web](https://github.com/fabiankastner/stock-ml-web)  
 - [fabiankastner/stock-ml-db](https://github.com/fabiankastner/stock-ml-db)  
 - [fabiankastner/stock-ml-data](https://github.com/fabiankastner/stock-ml-data)  
@@ -25,9 +24,7 @@ clone the following repositories as the mentioned folder structure indicates
 ``` 
 stock-ml/
 │
-├── docker-compose.yml(symlink)
-│
-├── stock-ml/
+├── docker-compose.yml
 │
 ├── stock-ml-web/
 │
@@ -40,7 +37,10 @@ stock-ml/
 ├── stock-config/
 ```
 
-create a symlink as indicated in the folder structure
+### setup
+
+Execute `git submodule init` after cloning this repository and changing into the directory.
+Finally run `git submodule update` to fully setup contained repositories.
 
 ### run  
 > doker-compose up --build -d  
