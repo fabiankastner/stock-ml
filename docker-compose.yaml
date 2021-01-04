@@ -25,10 +25,9 @@ services:
         ports:
             - "8000:8000"
         networks:
-        - stock-ml-network-extern
         - stock-ml-network-intern
 
-    config:
+    configservice:
         build: stock-ml-config/.
         ports:
             - "5000:5000"
@@ -41,6 +40,4 @@ services:
         - stock-ml-network-intern
 
 networks:
-    stock-ml-network-extern:
-        driver: bridge
     stock-ml-network-intern:
