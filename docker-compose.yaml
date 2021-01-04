@@ -29,7 +29,7 @@ services:
         - stock-ml-network-intern
 
     config:
-        build: stock-ml-config-master/.
+        build: stock-ml-config/.
         ports:
             - "5000:5000"
         networks:
