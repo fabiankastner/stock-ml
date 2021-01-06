@@ -43,4 +43,4 @@ stock-ml/
 create a symlink as indicated in the folder structure
 
 ### run  
-> doker-compose up --build -d  
+> docker-compose up --build -d  
