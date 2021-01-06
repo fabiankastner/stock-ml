@@ -1,15 +1,20 @@
 [submodule "stock-ml-nn"]
 	path = stock-ml-nn
-	url = https://github.com/fabiankastner/stock-ml-nn.git
+	url = git@github.com:fabiankastner/stock-ml-nn.git
+	branch = master
 [submodule "stock-ml-web"]
 	path = stock-ml-web
-	url = https://github.com/fabiankastner/stock-ml-web.git
+	url = git@github.com:fabiankastner/stock-ml-web.git
+	branch = main
 [submodule "stock-ml-db"]
 	path = stock-ml-db
-	url = https://github.com/fabiankastner/stock-ml-db.git
+	url = git@github.com:fabiankastner/stock-ml-db.git
+	branch = master
 [submodule "stock-ml-data"]
 	path = stock-ml-data
-	url = https://github.com/fabiankastner/stock-ml-data.git
+	url = git@github.com:fabiankastner/stock-ml-data.git
+	branch = master
 [submodule "stock-ml-config"]
 	path = stock-ml-config
-	url = https://github.com/fabiankastner/stock-ml-config.git
+	url = git@github.com:fabiankastner/stock-ml-config.git
+	branch = main
