@@ -39,8 +39,9 @@ stock-ml/
 
 ### setup
 
-Execute `git submodule init` after cloning this repository and changing into the directory.
-Finally run `git submodule update` to fully setup contained repositories.
+Clone Repo recursively with: `git clone https://github.com/fabiankastner/stock-ml --recursive`.
+
+In case you have already cloned it, execute `git submodule init` and finally `git submodule update`.
 
 ### run  
 > doker-compose up --build -d  
