@@ -1,0 +1,61 @@
+version: '3.7'
+
+volumes:
+    db_data:
+    django_data:
+
+services:
+    db:
+        image: mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: 'password'
+
+        networks:
+        - stock-ml-network-intern
+
+        command: --init-file /docker-entrypoint-initdb.d/init.sql
+
+        volumes:
+            - db_data:/var/lib/mysql
+            - ./stock-ml-db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    djangodb:
+        image: mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: 'password'
+        ports:
+            - '3306:3306'
+
+        networks:
+          - django-network
+
+        volumes:
+          - django_data:/var/lib/mysql
+
+    web:
+        build: stock-ml-web/.
+        environment:
+          DB_PASSWORD: 'password'
+          DB_HOST: 'djangodb'
+          DB_PORT: 3306
+        ports:
+            - "8000:8000"
+        networks:
+        - stock-ml-network-intern
+        - django-network
+
+    configservice:
+        build: stock-ml-config/.
+        ports:
+            - "5000:5000"
+        networks:
+        - stock-ml-network-intern
+
+    data:
+        build: stock-ml-data/.
+        networks:
+        - stock-ml-network-intern
+
+networks:
+    stock-ml-network-intern:
+    django-network:
