@@ -72,5 +72,3 @@ If you want to start django non-containerized on the host machine, but everythin
 As same volumes as in development are used, this can be utilized to initialize django database.
 
 > doker-compose -f local.docker-compose.yaml up
-
-
