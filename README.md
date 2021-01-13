@@ -4,12 +4,12 @@
 
 ---
 
-### summary  
+### **summary**
 an originally monolithic stock price prediction project using django as a front end, mysql as a database and tensorflow for neural network predictions.
 
 ---
 
-### repositories  
+### **repositories**
 Following repositories are included within this one:
 
 - [fabiankastner/stock-ml-web](https://github.com/fabiankastner/stock-ml-web)  
@@ -20,28 +20,57 @@ Following repositories are included within this one:
 
 ---
 
-### folder structure  
+### **folder structure**
+
 ``` 
 stock-ml/
 │
-├── docker-compose.yml
+├── dev.docker-compose.yml     --   development environment
 │
-├── stock-ml-web/
+├── local.docker-compose.yml   --   extended development environment (non-containerized django)
 │
-├── stock-ml-db/
+├── prod.docker-compose.yml    --   production environment
 │
-├── stock-ml-data/
+├── stock-ml-web/              --   django backend
 │
-├── stock-ml-nn/
+├── stock-ml-db/               --   stock database
 │
-├── stock-config/
+├── stock-ml-data/             --   data service
+│
+├── stock-ml-nn/               --   neural network
+│
+├── stock-config/              --   config service
 ```
 
-### setup
+### **setup**
 
 Clone Repo recursively with: `git clone https://github.com/fabiankastner/stock-ml --recursive`.
 
 In case you have already cloned it, execute `git submodule init` and finally `git submodule update`.
 
-### run  
-> doker-compose up --build -d  
+### **run**
+
+Non-prefixed docker-compose.yaml file only here for legacy reasons, to be removed soon.
+
+#### **production**
+
+*TODO*
+
+Made for production, debug modes disabled, hardened.
+
+> doker-compose -f prod.docker-compose.yaml up
+
+### **development**
+
+Suited for development, source code files of web service mapped into container to utilize django hot reload.
+
+> doker-compose -f dev.docker-compose.yaml up
+
+### **local**
+
+If you want to start django non-containerized on the host machine, but everything else should be available via docker.
+As same volumes as in development are used, this can be utilized to initialize django database.
+
+> doker-compose -f local.docker-compose.yaml up
+
+

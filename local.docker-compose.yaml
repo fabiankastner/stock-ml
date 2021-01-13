@@ -9,6 +9,8 @@ services:
         build: stock-ml-db/
         environment:
             MYSQL_ROOT_PASSWORD: "password"
+        ports:
+            - "3306:3306"
 
         networks:
             - stock-ml-network-intern
@@ -24,25 +26,15 @@ services:
             POSTGRES_PASSWORD: "password"
             POSTGRES_USER: "django"
             POSTGRES_DB: "django"
-        networks:
-            - django-network
+        ports:
+            - "5432:5432"
         volumes:
             - django_data:/var/lib/postgresql/data
 
-    web:
-        build: stock-ml-web/.
-        environment:
-            DB_PASSWORD: "password"
-            DB_HOST: "djangodb"
-            DB_PORT: 5432
-        ports:
-            - "8000:8000"
-        networks:
-            - stock-ml-network-intern
-            - django-network
-
     configservice:
         build: stock-ml-config/.
+        ports:
+            - "5000:5000"
         networks:
             - stock-ml-network-intern
 
