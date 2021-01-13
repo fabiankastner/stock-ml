@@ -72,3 +72,9 @@ If you want to start django non-containerized on the host machine, but everythin
 As same volumes as in development are used, this can be utilized to initialize django database.
 
 > doker-compose -f local.docker-compose.yaml up
+
+To finally start django replace values and execute
+
+> DB_NAME=django DB_USER=django DB_PASSWORD=password DB_HOST=localhost DB_PORT=5432 python manage.py makemigrations
+
+don't forget to also call `migrate` and `createsuperuser`.
