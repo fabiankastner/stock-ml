@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - env:
+            - name: CONFIG_ADDRESS
+              value: http://configservice-service:5000
+            - name: DATA_DB_DATABASE
+              value: stock_db
+            - name: DATA_DB_HOST
+              value: djangodb-service
+            - name: DATA_DB_PASSWORD
+              value: test123
+            - name: DATA_DB_PORT
+              value: "3306"
+            - name: DATA_DB_USER
+              value: stock_web
+            - name: DB_HOST
+              value: localhost
+            - name: DB_NAME
+              value: django
+            - name: DB_PASSWORD
+              value: password
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_USER
+              value: django
+          image: stock-ml_web
+          imagePullPolicy: Never
+          
+          name: web
+          ports:
+            - containerPort: 8000
+          resources: {}
+      restartPolicy: Always
+status: {}
