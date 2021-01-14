@@ -1,33 +1,42 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: db-deployment
+  name: stockdb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: db
+      run: stockdb-container
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: db
+        run: stockdb-container
     spec:
       containers:
-        - args:
+        - image: stock-ml_db
+          imagePullPolicy: Never
+          name: stockdb-container
+          args:
             - --init-file
             - /var/mysql/init/init.sql
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: password
-          image: stock-ml_db
-          imagePullPolicy: Never
-          name: db
+          ports:
+            - containerPort: 3306
           resources: {}
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: db-data
+        - image: stock-ml_data
+          imagePullPolicy: Never
+          name: data
+          env:
+            - name: DB_HOST
+              value: localhost
+          resources: {}
       restartPolicy: Always
       volumes:
         - name: db-data

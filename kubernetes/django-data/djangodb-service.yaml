@@ -4,7 +4,7 @@ metadata:
   name: djangodb-service
 spec:
   selector:
-    run: djangodb
+    run: djangodb-container
   ports:
     - protocol: TCP
       port: 5432

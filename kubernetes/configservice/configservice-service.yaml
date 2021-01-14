@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: configservice-service
+  name: configservice
 spec:
   selector:
-    run: configservice
+    run: configservice-container
   ports:
     - protocol: TCP
       port: 5000

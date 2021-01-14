@@ -6,12 +6,12 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: configservice
+      run: configservice-container
   strategy: {}
   template:
     metadata:
       labels:
-        app: configservice
+        run: configservice-container
     spec:
       containers:
         - image: poel22/stock-ml_configservice

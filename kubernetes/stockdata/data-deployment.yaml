@@ -14,7 +14,10 @@ spec:
         app: data
     spec:
       containers:
-        - image: stock-ml_data
+        - env:
+            - name: DB_HOST
+              value: localhost
+          image: stock-ml_data
           imagePullPolicy: Never
           name: data
           resources: {}

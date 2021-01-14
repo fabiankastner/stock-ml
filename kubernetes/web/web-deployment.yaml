@@ -16,11 +16,11 @@ spec:
       containers:
         - env:
             - name: CONFIG_ADDRESS
-              value: http://configservice-service:5000
+              value: http://configservice:5000
             - name: DATA_DB_DATABASE
               value: stock_db
             - name: DATA_DB_HOST
-              value: djangodb-service
+              value: stockdb
             - name: DATA_DB_PASSWORD
               value: test123
             - name: DATA_DB_PORT
@@ -28,7 +28,7 @@ spec:
             - name: DATA_DB_USER
               value: stock_web
             - name: DB_HOST
-              value: localhost
+              value: djangodb-service
             - name: DB_NAME
               value: django
             - name: DB_PASSWORD

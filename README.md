@@ -78,3 +78,11 @@ To finally start django replace values and execute
 > DB_NAME=django DB_USER=django DB_PASSWORD=password DB_HOST=localhost DB_PORT=5432 python manage.py makemigrations
 
 don't forget to also call `migrate` and `createsuperuser`.
+
+## References
+
+### Kubernetes
+* Kubernetes explanation: https://medium.com/swlh/pods-deployments-and-services-in-kubernetes-396e04e41e8
+* Interactive tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/
+* Nginx Loadbalancer with affinity cookie: https://kubernetes.github.io/ingress-nginx/examples/affinity/cookie/
+* 

@@ -6,16 +6,16 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: djangodb
+      run: djangodb-container
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: djangodb
+        run: djangodb-container
     spec:
       containers:
-        - name: djangodb
+        - name: djangodb-container
           ports: 
             - containerPort: 5432
           env:
