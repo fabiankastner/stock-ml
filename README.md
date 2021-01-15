@@ -2,13 +2,11 @@
 
 ## **CLC** - Monolith to Microservice with CI/CD pipeline 
 
----
 
 ### **Summary**
 
 An originally monolithic stock price prediction project using django as a front end, mysql as a database and tensorflow for neural network predictions.
 
----
 
 ### **Repositories**
 
@@ -20,7 +18,6 @@ Following repositories are included within the main project:
 - [fabiankastner/stock-ml-nn](https://github.com/fabiankastner/stock-ml-nn)  
 - [fabiankastner/stock-ml-config](https://github.com/fabiankastner/stock-ml-config)  
 
----
 
 ### **Folder structure**
 
