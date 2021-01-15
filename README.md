@@ -112,11 +112,11 @@ don't forget to also call `python manage.py migrate` and `python manage.py creat
 
 ### **References**
 
-## Kubernetes
+#### Kubernetes:
 * Kubernetes explanation: https://medium.com/swlh/pods-deployments-and-services-in-kubernetes-396e04e41e8
 * Interactive tutorial: https://kubernetes.io/docs/tutorials/kubernetes-basics/
 * Nginx Loadbalancer with affinity cookie: https://kubernetes.github.io/ingress-nginx/examples/affinity/cookie/
-* 
+
 
 ### **Contributors**
 * Fabian Kastner
