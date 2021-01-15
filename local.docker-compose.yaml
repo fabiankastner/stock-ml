@@ -1,0 +1,48 @@
+version: "3.7"
+
+volumes:
+    db_data:
+    django_data:
+
+services:
+    db:
+        build: stock-ml-db/
+        environment:
+            MYSQL_ROOT_PASSWORD: "password"
+        ports:
+            - "3306:3306"
+
+        networks:
+            - stock-ml-network-intern
+
+        command: --init-file /var/mysql/init/init.sql
+
+        volumes:
+            - db_data:/var/lib/mysql
+
+    djangodb:
+        image: postgres
+        environment:
+            POSTGRES_PASSWORD: "password"
+            POSTGRES_USER: "django"
+            POSTGRES_DB: "django"
+        ports:
+            - "5432:5432"
+        volumes:
+            - django_data:/var/lib/postgresql/data
+
+    configservice:
+        build: stock-ml-config/.
+        ports:
+            - "5000:5000"
+        networks:
+            - stock-ml-network-intern
+
+    data:
+        build: stock-ml-data/.
+        networks:
+            - stock-ml-network-intern
+
+networks:
+    stock-ml-network-intern:
+    django-network:

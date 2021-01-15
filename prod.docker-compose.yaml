@@ -1,0 +1,65 @@
+version: "3.7"
+
+volumes:
+    db_data:
+    django_data:
+
+services:
+    db:
+        build: stock-ml-db/
+        environment:
+            MYSQL_ROOT_PASSWORD: "password"
+
+        networks:
+            - stock-ml-network-intern
+
+        command: --init-file /var/mysql/init/init.sql
+
+        volumes:
+            - db_data:/var/lib/mysql
+
+    djangodb:
+        image: postgres
+        environment:
+            POSTGRES_PASSWORD: "password"
+            POSTGRES_USER: "django"
+            POSTGRES_DB: "django"
+        networks:
+            - django-network
+        volumes:
+            - django_data:/var/lib/postgresql/data
+
+    web:
+        build: stock-ml-web/.
+        environment:
+            CONFIG_ADDRESS: "http://configservice:5000"
+            DB_NAME: "django"
+            DB_USER: "django"
+            DB_PASSWORD: "password"
+            DB_HOST: "djangodb"
+            DB_PORT: 5432
+            # some magic values come due to init.sql from db
+            DATA_DB_USER: "stock_web"
+            DATA_DB_DATABASE: "stock_db"
+            DATA_DB_PASSWORD: "test123"
+            DATA_DB_HOST: "db"
+            DATA_DB_PORT: 3306
+        ports:
+            - "8000:8000"
+        networks:
+            - stock-ml-network-intern
+            - django-network
+
+    configservice:
+        build: stock-ml-config/.
+        networks:
+            - stock-ml-network-intern
+
+    data:
+        build: stock-ml-data/.
+        networks:
+            - stock-ml-network-intern
+
+networks:
+    stock-ml-network-intern:
+    django-network:
