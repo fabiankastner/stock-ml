@@ -41,5 +41,10 @@ services:
         networks:
         - stock-ml-network-intern
 
+    nn:
+        build: stock-ml-nn/.
+        networks:
+        - stock-ml-network-intern
+
 networks:
     stock-ml-network-intern:
