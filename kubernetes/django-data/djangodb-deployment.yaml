@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: djangodb-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: djangodb-container
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        run: djangodb-container
+    spec:
+      containers:
+        - name: djangodb-container
+          ports: 
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: django
+            - name: POSTGRES_PASSWORD
+              value: password
+            - name: POSTGRES_USER
+              value: django
+          image: postgres
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: django-data
+      restartPolicy: Always
+      volumes:
+        - name: django-data
+          persistentVolumeClaim:
+            claimName: django-data
+status: {}

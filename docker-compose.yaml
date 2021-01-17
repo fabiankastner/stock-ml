@@ -26,6 +26,8 @@ services:
             - "8000:8000"
         networks:
         - stock-ml-network-intern
+        volumes:
+          - ./stock-ml-web/stock-ml-web/db.sqlite3:/app/db.sqlite3
 
     configservice:
         build: stock-ml-config/.
@@ -36,6 +38,11 @@ services:
 
     data:
         build: stock-ml-data/.
+        networks:
+        - stock-ml-network-intern
+
+    nn:
+        build: stock-ml-nn/.
         networks:
         - stock-ml-network-intern
 
