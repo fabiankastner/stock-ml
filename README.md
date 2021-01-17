@@ -80,8 +80,6 @@ Non-prefixed docker-compose.yaml file only here for legacy reasons, to be remove
 
 #### Production:
 
-*TODO*
-
 Made for production, debug modes disabled, hardened.
 
 > docker-compose -f prod.docker-compose.yaml up
