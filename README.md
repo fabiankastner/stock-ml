@@ -30,6 +30,8 @@ stock-ml/
 │
 ├── prod.docker-compose.yml    --   production environment
 │
+├── kubernetes                 --   everything for the local kubernetes setup
+│
 ├── stock-ml-web/              --   django backend
 │
 ├── stock-ml-db/               --   stock database
@@ -104,6 +106,32 @@ To finally start django replace values and execute
 `python manage.py makemigrations`
 
 don't forget to also call `python manage.py migrate` and `python manage.py createsuperuser`.
+
+### **Run Kubernetes**
+
+#### Local:
+
+Necessary tools installed: kubectl & kind / minikube / other local cluster.
+
+If you want to develop in a full sandbox (local DB) you can use the `kubernetes` folder in this repository root, and apply
+
+> kubectl apply -f {subfolder}
+
+for every subfolder in there.
+
+#### Azure:
+
+Necessary tools installed: kubectl & azure cli (az).
+
+To set necessary kube context locally execute:
+
+> az aks get-credentials --resource-group {yourResGroup} --name {kubernetesServiceName}
+
+Databases have to be provided as database serivce / vm. As CD is used, kubernetes files are split up into the subrepositories. To deploy any part of the project as kubernetes service, just execute:
+
+> kubectl apply -f kubernetes/
+
+Keep the configuration settings up to date, and the secrets out of versioning ;)
 
 ### **References**
 
