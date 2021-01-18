@@ -131,6 +131,8 @@ Databases have to be provided as database serivce / vm. As CD is used, kubernete
 
 > kubectl apply -f kubernetes/
 
+Both `stock-ml-config` & `stock-ml-web` can be scaled up as long as the underlying RDMS can withstand the traffic. This can be done manually by editing the deployment or automatically by using kubectl / azure, more information at https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler.
+
 Keep the configuration settings up to date, and the secrets out of versioning ;)
 
 ### **References**
