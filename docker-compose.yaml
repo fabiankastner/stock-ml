@@ -1,50 +1,41 @@
-version: '3.7'
-
-volumes:
-    db_data:
+version: "3.7"
 
 services:
-    db:
-        image: mysql
-        environment:
-            MYSQL_ROOT_PASSWORD: 'password'
-        ports:
-            - '3306:3306'
-
-        networks:
-        - stock-ml-network-intern
-
-        command: --init-file /docker-entrypoint-initdb.d/init.sql
-
-        volumes:
-            - db_data:/var/lib/mysql
-            - ./stock-ml-db/init.sql:/docker-entrypoint-initdb.d/init.sql
-
-    web:
+    web-service:
         build: stock-ml-web/.
+        environment:
+            CONFIG_ADDRESS: "http://config-service:5000"
+            DB_NAME: "django"
+            DB_USER: "django"
+            DB_PASSWORD: "password"
+            DB_HOST: "djangodb"
+            DB_PORT: 5432
+            DATA_DB_USER: "stock_web"
+            DATA_DB_DATABASE: "stock_db"
+            DATA_DB_PASSWORD: "test123"
+            DATA_DB_HOST: "db"
+            DATA_DB_PORT: 3306
         ports:
             - "8000:8000"
         networks:
-        - stock-ml-network-intern
-        volumes:
-          - ./stock-ml-web/stock-ml-web/db.sqlite3:/app/db.sqlite3
+            - stock-ml-network-intern
 
-    configservice:
+    config-service:
         build: stock-ml-config/.
         ports:
             - "5000:5000"
         networks:
-        - stock-ml-network-intern
+            - stock-ml-network-intern
 
-    data:
+    data-service:
         build: stock-ml-data/.
         networks:
-        - stock-ml-network-intern
+            - stock-ml-network-intern
 
-    nn:
+    nn-service:
         build: stock-ml-nn/.
         networks:
-        - stock-ml-network-intern
+            - stock-ml-network-intern
 
 networks:
     stock-ml-network-intern:
